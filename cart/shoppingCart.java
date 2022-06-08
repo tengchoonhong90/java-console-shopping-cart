@@ -11,38 +11,35 @@ public class shoppingCart {
         int delIndex;
         boolean stop= false;
 
-        System.out.println(("Welcome to your Shopping Cart!"));
-        System.out.println(("=============================="));
-        System.out.println(("Enter Command:"));
-        System.out.println(("1. List"));
-        System.out.println(("2. Add <Item>"));
-        System.out.println(("3. Delete <Index>"));
-        System.out.println(("4. Exit"));
-
         // main loop
         while(!stop){
             input = cons.readLine("> ");
             System.out.printf("READ: %s\n", input);
-            String[] terms = input.split(" ");
+            String[] terms = input.split("[ .,]+");
             String cmd = terms[0];
+
+            System.out.println(("Welcome to your Shopping Cart!"));
+            System.out.println(("=============================="));
+            System.out.println(("Enter Command:"));
+            System.out.println(("1. List"));
+            System.out.println(("2. Add <Item>"));
+            System.out.println(("3. Delete <Index>"));
+            System.out.println(("4. Exit"));
             
             switch(cmd){
                 case "add":
-                    String fruitsStr = terms[1];
-                    String fruitsReplaced = fruitsStr.replace(",", " ");
-                    String[] fruits = fruitsReplaced.split(" ");
             
-                    for(int i=0; i < fruits.length; i++){
+                    for(int i=1; i < terms.length; i++){
                         boolean found = false;
                         for(int j=0; j <cart.size(); j++){
-                            if(fruits[i].toUpperCase().equals(cart.get(j).toUpperCase())){
+                            if(terms[i].toUpperCase().equals(cart.get(j).toUpperCase())){
                                 found = true ;
                                 break;
                             }
                         }
                         if(!found){
-                            cart.add(fruits[i]);
-                            System.out.printf("Added %s to cart\n", fruits[i]);
+                            cart.add(terms[i]);
+                            System.out.printf("Added %s to cart\n", terms[i]);
                         }
                     }
                     break;
