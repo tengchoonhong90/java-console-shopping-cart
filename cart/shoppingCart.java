@@ -13,18 +13,17 @@ public class shoppingCart {
 
         // main loop
         while(!stop){
-            input = cons.readLine("> ");
-            System.out.printf("READ: %s\n", input);
-            String[] terms = input.split("[ .,]+");
-            String cmd = terms[0];
-
-            System.out.println(("Welcome to your Shopping Cart!"));
+            System.out.println(("\n\nWelcome to your Shopping Cart!"));
             System.out.println(("=============================="));
             System.out.println(("Enter Command:"));
             System.out.println(("1. List"));
             System.out.println(("2. Add <Item>"));
             System.out.println(("3. Delete <Index>"));
             System.out.println(("4. Exit"));
+
+            input = cons.readLine("> ");
+            String[] terms = input.split("[ .,]+");
+            String cmd = terms[0];
             
             switch(cmd){
                 case "add":
@@ -58,7 +57,6 @@ public class shoppingCart {
                     }else{
                         try{
                             delIndex = Integer.parseInt(terms[1]) - 1;
-                            System.out.println(delIndex);
                             if(delIndex >= 0 && delIndex < cart.size()){
                                 System.out.printf("Deleted %s from cart\n", cart.get(delIndex));
                                 cart.remove(delIndex);
